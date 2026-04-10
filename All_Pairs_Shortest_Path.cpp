@@ -60,12 +60,15 @@ signed main()
 
         for (int i = 1; i <= n; i++)
         {
-            for (int j = 1; j <= n; j++)
+            if (is_present[i])
             {
-                if (is_present[i] and is_present[j])
+                for (int j = 1; j <= n; j++)
                 {
-                    // both nodes to be unlocked is bare minimum
-                    sum += graph[i][j];
+                    if (is_present[j])
+                    {
+                        // both nodes to be unlocked is bare minimum
+                        sum += graph[i][j];
+                    }
                 }
             }
         }
@@ -73,8 +76,8 @@ signed main()
         ans.push_back(sum);
     }
 
-    reverse(ans.begin(),ans.end());
-    
+    reverse(ans.begin(), ans.end());
+
     for (auto x : ans)
     {
         cout << x << " ";
